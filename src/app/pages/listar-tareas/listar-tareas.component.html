@@ -1,0 +1,44 @@
+<div class="container mt-2" *ngIf="loading">
+    <div class="row mt-5">
+        <div class="col-lg-12 col-md-12 col-sm-12 text-center ">
+            <div class="spinner-border text-success" style="width: 13rem; height: 13rem;" role="status">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5" *ngIf="!loading">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h1>Bandeja de tareas sin asignar</h1>
+        </div>
+    </div>
+    <div class="row" *ngIf="!showTable">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="alert alert-secondary" role="alert">
+                No existen tareas sin asignar
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="showTable">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <table datatable [dtOptions]="dtOptions" id="tbTaskList" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Id Tarea</th>
+                        <th scope="col">Nombre de la tarea</th>
+                        <th scope="col">Tomar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listadoTareas">
+                        <td>{{item.id}}</td>
+                        <td>{{item.displayName}}</td>
+                        <td>
+                            <button type="button" class="btn btn-success" (click)="asignarTarea(item.id)"><span> <i class="fa fa-user"></i></span> Tomar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

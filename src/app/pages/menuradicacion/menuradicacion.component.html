@@ -1,0 +1,18 @@
+
+<div class="page-container" >
+
+  <div class="sidebar" *ngIf="mostrarmenu">
+    <div class="list-items">
+
+      <a routerLink="/listar-tareas" class="list-item"><i class="material-icons">bookmark</i>Listar Tareas</a>
+      <a routerLink="/mis-tareas" class="list-item"><i class="material-icons">bookmark</i>Asignar Tareas</a>
+      <a routerLink="/aprobartarea" class="list-item"><i class="material-icons">bookmark</i>Aprobar Tareas</a>
+    </div>
+  </div>
+  <div class="page-content-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,55 @@
+.page-container{
+  display: flex;
+  height: 600px;
+
+}
+
+.page-content-container{
+  width: 100%;
+  padding: 20px;
+}
+
+
+.sidebar{
+  height:100%;
+  width: 300px;
+  background:slateblue;
+}
+
+.list-items{
+padding-top: 60px;
+}
+
+.list-item{
+    display: flex;
+    font-size: 20px;
+    position: relative;
+    color: antiquewhite;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.list-item:hover{
+    color:orange;
+}
+
+.list-item::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: orange ;
+    opacity: 0;
+    transform: scaleY(0);
+}
+
+.list-item:hover::before{
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.list-item i.material-icons{
+    margin-right: 20px;
+    font-size: 20px;
+}
