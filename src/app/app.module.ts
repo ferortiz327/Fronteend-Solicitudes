@@ -18,6 +18,7 @@ import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-
 import { MenuradicacionComponent } from './pages/menuradicacion/menuradicacion.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { AprobartareaComponent } from './pages/aprobartarea/aprobartarea.component';
+import { ViabilidadTrasladoComponent } from './pages/viabilidad-Traslado/viabilidad-traslado.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { AprobartareaComponent } from './pages/aprobartarea/aprobartarea.compone
     MisTareasComponent,
     MenuradicacionComponent,
     InicioComponent,
-    AprobartareaComponent
+    AprobartareaComponent,
+    ViabilidadTrasladoComponent
   ],
   imports: [
     BrowserModule,
