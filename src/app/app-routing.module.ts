@@ -1,3 +1,4 @@
+import { ViabilidadTrasladoComponent } from './pages/viabilidad-Traslado/viabilidad-traslado.component';
 import { AprobartareaComponent } from './pages/aprobartarea/aprobartarea.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { MenuradicacionComponent } from './pages/menuradicacion/menuradicacion.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'listar-tareas', component: ListarTareasComponent, canActivate: [AuthenticationGuard], },
   { path: 'mis-tareas', component: MisTareasComponent, canActivate: [AuthenticationGuard], },
   { path: 'aprobartareas', component: AprobartareaComponent, canActivate:[AuthenticationGuard],},
+  { path: 'viabilidad-traslado', component: ViabilidadTrasladoComponent, canActivate:[AuthenticationGuard],},
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 
