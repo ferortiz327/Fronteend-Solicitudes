@@ -18,6 +18,7 @@ import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-
 import { MenuradicacionComponent } from './pages/menuradicacion/menuradicacion.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { AprobartareaComponent } from './pages/aprobartarea/aprobartarea.component';
+
 @NgModule({
   declarations: [
     AppComponent,

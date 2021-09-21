@@ -83,12 +83,6 @@ export class BonitaService {
     return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
   }
 
-  public getTaskListAgneda(userId: string): Observable<ITaskDetail[]> {
-    const endpoint: string = environment.services.urlBase + environment.services.get.taskByUser + userId;
-    return this.http.get<ITaskDetail[]>(endpoint, { withCredentials: true });
-  }
-
-
 }
 
 
