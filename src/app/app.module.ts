@@ -19,6 +19,9 @@ import { MenuradicacionComponent } from './pages/menuradicacion/menuradicacion.c
 import { InicioComponent } from './components/inicio/inicio.component';
 import { AprobartareaComponent } from './pages/aprobartarea/aprobartarea.component';
 import { AsesorllamaComponent } from './pages/asesorllama/asesorllama.component';
+import { ViabilidadTrasladoComponent } from './pages/viabilidad-traslado/viabilidad-traslado.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,9 @@ import { AsesorllamaComponent } from './pages/asesorllama/asesorllama.component'
     MenuradicacionComponent,
     InicioComponent,
     AprobartareaComponent,
-    AsesorllamaComponent
+    AsesorllamaComponent,
+    ViabilidadTrasladoComponent
+
   ],
   imports: [
     BrowserModule,

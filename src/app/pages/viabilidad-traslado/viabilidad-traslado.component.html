@@ -1,47 +1,48 @@
 <div class="container mt-2" *ngIf="loading">
-  <div class="row mt-5">
-      <div class="col-lg-12 col-md-12 col-sm-12 text-center ">
-          <div class="spinner-border text-success" style="width: 13rem; height: 13rem;" role="status">
-          </div>
-      </div>
+    <div class="row mt-5">
+        <div class="col-lg-12 col-md-12 col-sm-12 text-center ">
+            <div class="spinner-border text-success" style="width: 13rem; height: 13rem;" role="status">
+            </div>
+        </div>
+    </div>
   </div>
-</div>
-<div class="container mt-5" *ngIf="!loading">
-  <div class="row">
+  <div class="container mt-5" *ngIf="!loading">
+    <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
-          <h1>Mis Tareas -Agenda del dia</h1>
+          <h1>Viabilidad traslado</h1>
       </div>
-  </div>
-  <div class="row" *ngIf="!showTable">
+    </div>
+    <div class="row" *ngIf="!showTable">
       <div class="col-lg-12 col-md-12 col-sm-12">
           <div class="alert alert-secondary" role="alert">
-              No existen tareas asignadas
+              No existen agendas para aprobar
           </div>
       </div>
   </div>
   <div class="row" *ngIf="showTable">
-      <div class="col-lg-6 col-md-6 col-sm-6">
-          <table datatable [dtOptions]="dtOptions" id="tbTaskList" class="table table-striped" style="width:100%">
-              <thead>
-                  <tr>
-                      <th scope="col">Id Tarea</th>
-                      <th scope="col">Nombre de la tarea</th>
-                      <th scope="col">Completar</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let item of listadoTareas">
-                      <td>{{item.id}}</td>
-                      <td>{{item.displayName}}</td>
-                      <td>
-                          <button type="button" class="btn btn-primary" (click)="completarTarea(item.id)"><span> <i class="fa fa-user"></i></span> Completar tarea</button>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-
-      <div class="col-lg-6 col-md-6 col-sm-6" *ngIf="showDetail">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <table datatable [dtOptions]="dtOptions" id="tbTaskList" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th scope="col">Id Tarea</th>
+                    <th scope="col">Nombre de la tarea</th>
+                    <th scope="col">Nombre Proceso</th>
+                    <th scope="col">Fecha Vencimiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listadoTareas">
+                    <td>{{item.id}}</td>
+                    <td>{{item.displayName}}</td>
+                    <td>{{item.displayName}}</td>
+                    <td>{{item.displayName}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" (click)="completarTarea(item.id)"><span> <i class="fa fa-user"></i></span> Aprobar Agenda</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="col-lg-6 col-md-6 col-sm-6" *ngIf="showDetail">
           <div class="card">
               <div class="card-header">
                   Formulario
@@ -52,7 +53,7 @@
                           <h1>Agendamiento del dia</h1>
                       </div>
                   </div>
-
+  
                   <div [formGroup]="form">
                       <ng-container formArrayName="tasks">
                           <ng-container *ngFor="let taskForm of tasks?.controls; let i = index">
@@ -129,14 +130,19 @@
                       <!-- <button mat-mini-fab (click)="addLesson()">
                           <mat-icon class="add-course-btn">add</mat-icon>
                       </button> -->
-
+  
                   </div>
-
+  
               </ul>
           </div>
-
+  
       </div>
-
-
+  
+  
+  
+  
+  
+      </div>
+  
   </div>
-</div>
+  
