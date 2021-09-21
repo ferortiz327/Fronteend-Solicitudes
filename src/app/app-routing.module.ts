@@ -7,15 +7,17 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { ListarTareasComponent } from './pages/listar-tareas/listar-tareas.component';
 import { MisTareasComponent } from './pages/mis-tareas/mis-tareas.component';
+import { AsesorllamaComponent } from './pages/asesorllama/asesorllama.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'inicio', component: InicioComponent, canActivate: [AuthenticationGuard],},
   //{ path: 'menuradicacion', component: MenuradicacionComponent, canActivate: [AuthenticationGuard],},
-  { path: 'lista-tareas', component: ListarTareasComponent, canActivate: [AuthenticationGuard], },
+  { path: 'listar-tareas', component: ListarTareasComponent, canActivate: [AuthenticationGuard], },
   { path: 'mis-tareas', component: MisTareasComponent, canActivate: [AuthenticationGuard], },
   { path: 'aprobartareas', component: AprobartareaComponent, canActivate:[AuthenticationGuard],},
-  { path: '**', redirectTo: 'login', pathMatch: 'full' }
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'asesorllama', component: AsesorllamaComponent, canActivate:[AuthenticationGuard] }
 ];
 
 @NgModule({
