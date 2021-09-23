@@ -104,6 +104,51 @@ export class BonitaService {
     return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
   }
 
+  public guardarDarAConocer(idTarea: string, data: any): Observable<any> {
+    const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
+    const endpoint: string = environment.services.urlBase + environment.services.post.ejecutarTareaDelDia + idTarea + "/execution"
+
+    const obj =
+    {
+      "registroActividad": {
+          "alternativaSeleccionada":data
+      }
+    }
+
+    console.log(JSON.stringify(obj))
+    return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
+  }
+
+  public guardarAgendarVisita(idTarea: string, data: any): Observable<any> {
+    const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
+    const endpoint: string = environment.services.urlBase + environment.services.post.ejecutarTareaDelDia + idTarea + "/execution"
+
+    const obj =
+    {
+      "registroActividad": {
+          "fechaVisita":data
+      }
+    }
+
+    console.log(JSON.stringify(obj))
+    return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
+  }
+
+  public guardarAsesorarCliente(idTarea: string, data: any): Observable<any> {
+    const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
+    const endpoint: string = environment.services.urlBase + environment.services.post.ejecutarTareaDelDia + idTarea + "/execution"
+
+    const obj =
+    {
+      "registroActividad": {
+          "solicitudInmediata":data
+      }
+    }
+
+    console.log(JSON.stringify(obj))
+    return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
+  }
+
 }
 
 

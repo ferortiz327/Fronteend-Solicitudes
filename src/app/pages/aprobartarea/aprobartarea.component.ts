@@ -17,7 +17,7 @@ import { AlertSetting } from '../../global/constants/AlertSetting';
   styleUrls: ['./aprobartarea.component.css']
 })
 export class AprobartareaComponent implements OnInit {
-   loading: boolean = true;
+  loading: boolean = true;
   listadoTareas: ITaskDetail[] = []
   dtOptions: DataTables.Settings = {};
   showTable: boolean = false
@@ -162,4 +162,3 @@ export class AprobartareaComponent implements OnInit {
 
   }
 }
-
