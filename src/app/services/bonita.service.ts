@@ -104,6 +104,22 @@ export class BonitaService {
     return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
   }
 
+  public guardarAsesorLlama(idTarea: string, data: any): Observable<any> {
+    const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
+    const endpoint: string = environment.services.urlBase + environment.services.post.ejecutarTareaDelDia + idTarea + "/execution"
+
+    const obj =
+    {
+      "registroActividad": {
+          "respuestaCliente":data
+      }
+    }
+
+    console.log(endpoint);
+    console.log(JSON.stringify(obj))
+    return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
+  }
+
 }
 
 
