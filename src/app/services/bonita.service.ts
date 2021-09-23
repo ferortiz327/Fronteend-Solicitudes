@@ -96,7 +96,7 @@ export class BonitaService {
     const obj =
     {
       "registroActividad": {
-          "resultadoDobleAsesoria":data
+        "resultadoDobleAsesoria": data
       }
     }
 
@@ -111,7 +111,7 @@ export class BonitaService {
     const obj =
     {
       "registroActividad": {
-          "respuestaCliente":data
+        "respuestaCliente": data
       }
     }
 
@@ -120,6 +120,22 @@ export class BonitaService {
     return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
   }
 
+  public guardarViabilidadTraslado(idTarea: string, regimen: any, tiempoAfiliacion: any, salario: any): Observable<any> {
+    const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
+    const endpoint: string = environment.services.urlBase + environment.services.post.ejecutarTareaDelDia + idTarea + "/execution"
+
+    const obj =
+    {
+      "registroActividad": {
+        "regimen": regimen,
+        "tiempoAfiliacion": tiempoAfiliacion,
+        "salario": salario
+      }
+    }
+
+    console.log(JSON.stringify(obj))
+    return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
+  }
 }
 
 
