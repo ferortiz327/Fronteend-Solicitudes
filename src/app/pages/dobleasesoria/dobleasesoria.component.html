@@ -1,0 +1,76 @@
+<div class="container mt-2" *ngIf="loading">
+  <div class="row mt-5">
+      <div class="col-lg-12 col-md-12 col-sm-12 text-center ">
+          <div class="spinner-border text-success" style="width: 13rem; height: 13rem;" role="status">
+          </div>
+      </div>
+  </div>
+</div>
+<div class="container mt-5" *ngIf="!loading">
+  <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+          <h1>Aprobación -Agenda del dia</h1>
+      </div>
+  </div>
+  <div class="row" *ngIf="!showTable">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="alert alert-secondary" role="alert">
+              No existen tareas asignadas
+          </div>
+      </div>
+  </div>
+  <div class="row" *ngIf="showTable">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+          <table datatable [dtOptions]="dtOptions" id="tbTaskList" class="table table-striped" style="width:100%">
+              <thead>
+                  <tr>
+                      <th scope="col">Id Tarea</th>
+                      <th scope="col">Nombre de la tarea</th>
+                      <th scope="col">Proceso</th>
+                      <th scope="col">Completar</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of listadoTareas">
+                      <td>{{item.id}}</td>
+                      <td>{{item.displayName}}</td>
+                      <td>{{"Doble Asesoría"}}</td>
+                      <td>
+                          <button type="button" class="btn btn-primary" (click)="completarTarea(item.id)"><span> <i class="fa fa-user"></i></span> Procesar</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6" *ngIf="showDetail" >
+        <form novalidate [formGroup]="datosform" >
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="identificacion">Identificacion</label>
+                <input class="form-control" formControlName="identificacion" type="text">
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="form-group">
+              <label for="resultadoDobleAsesoria">Resultado Doble Asesoria</label>
+              <select class="form-control" formControlName="resultadoDobleAsesoria">
+                <option value="SELECCIONE" disabled>SELECCIONE...</option>
+                    <option value="Favorece RPM">Favorece RPM</option>
+                    <option value="Favorece RAIS">Favorece RAIS</option>
+                  </select>
+          </div>
+      </div>
+          <div class="container row mt-2 text-center">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <button class="btn btn-success" (click)="guardarTareas()"><i class="fa fa-save"></i>Guardar</button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <button class="btn btn-secondary" (click)="showDetail = false"><i class="fa fa-ban"></i>Cancelar</button>
+            </div>
+        </div>
+        </form>
+      </div>
+
+
+  </div>
+</div>

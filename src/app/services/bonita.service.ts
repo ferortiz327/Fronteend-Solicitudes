@@ -1,3 +1,4 @@
+import { IDobleAsesoria } from './../interfaces/IDobleAsesoria';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
@@ -77,6 +78,26 @@ export class BonitaService {
     const obj =
     {
       "listadoProspectos": data
+    }
+
+    console.log(JSON.stringify(obj))
+    return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
+  }
+
+  public obtenerInformacionDobleAsesoria(urlInformacion: string): Observable<IDobleAsesoria> {
+    const endpoint: string = environment.services.urlBase + "/" + urlInformacion
+    return this.http.get<IDobleAsesoria>(endpoint, { withCredentials: true });
+  }
+
+  public guardarDobleAsesoria(idTarea: string, data: any): Observable<any> {
+    const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
+    const endpoint: string = environment.services.urlBase + environment.services.post.ejecutarTareaDelDia + idTarea + "/execution"
+
+    const obj =
+    {
+      "registroActividad": {
+          "resultadoDobleAsesoria":data
+      }
     }
 
     console.log(JSON.stringify(obj))

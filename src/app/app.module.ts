@@ -20,6 +20,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { AprobartareaComponent } from './pages/aprobartarea/aprobartarea.component';
 import { AsesorllamaComponent } from './pages/asesorllama/asesorllama.component';
 import { ViabilidadTrasladoComponent } from './pages/viabilidad-traslado/viabilidad-traslado.component';
+import { DobleasesoriaComponent } from './pages/dobleasesoria/dobleasesoria.component';
 
 
 @NgModule({
@@ -33,8 +34,8 @@ import { ViabilidadTrasladoComponent } from './pages/viabilidad-traslado/viabili
     InicioComponent,
     AprobartareaComponent,
     AsesorllamaComponent,
-    ViabilidadTrasladoComponent
-
+    ViabilidadTrasladoComponent,
+    DobleasesoriaComponent
   ],
   imports: [
     BrowserModule,

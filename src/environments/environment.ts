@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   services: {
     urlBase: "http://localhost:8080/bonita",
+     //urlBase: "http://52.136.127.8:8080/bonita",
     post: {
       login: "/loginservice",
       crearCaso: "",

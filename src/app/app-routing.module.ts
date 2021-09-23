@@ -1,3 +1,4 @@
+import { DobleasesoriaComponent } from './pages/dobleasesoria/dobleasesoria.component';
 import { ViabilidadTrasladoComponent } from './pages/viabilidad-traslado/viabilidad-traslado.component';
 import { AprobartareaComponent } from './pages/aprobartarea/aprobartarea.component';
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'aprobartareas', component: AprobartareaComponent, canActivate:[AuthenticationGuard],},
   { path: 'asesorllama', component: AsesorllamaComponent, canActivate:[AuthenticationGuard],},
   { path: 'viabilidad-traslado', component: ViabilidadTrasladoComponent, canActivate:[AuthenticationGuard],},
+  { path: 'dobleasesoria', component: DobleasesoriaComponent, canActivate:[AuthenticationGuard],},
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 
