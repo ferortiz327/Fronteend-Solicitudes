@@ -12,7 +12,7 @@ import { IAsesorLlama } from 'src/app/interfaces/IAsesorLlama';
 
 @Component({
   selector: 'app-asesorllama',
-  templateUrl: './Asesorllama.component.html',
+  templateUrl: './asesorllama.component.html',
   styleUrls: ['./asesorllama.component.css']
 })
 export class AsesorllamaComponent implements OnInit {
