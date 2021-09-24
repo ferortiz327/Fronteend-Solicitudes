@@ -8,141 +8,149 @@
   </div>
   <div class="container mt-5" *ngIf="!loading">
     <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12">
-          <h1>Viabilidad traslado</h1>
-      </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h1>Aprobación -Agenda del dia</h1>
+        </div>
     </div>
     <div class="row" *ngIf="!showTable">
-      <div class="col-lg-12 col-md-12 col-sm-12">
-          <div class="alert alert-secondary" role="alert">
-              No existen agendas para aprobar
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="alert alert-secondary" role="alert">
+                No existen tareas asignadas
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="showTable">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <table datatable [dtOptions]="dtOptions" id="tbTaskList" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Id Tarea</th>
+                        <th scope="col">Nombre de la tarea</th>
+                        <th scope="col">Proceso</th>
+                        <th scope="col">Completar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listadoTareas">
+                        <td>{{item.id}}</td>
+                        <td>{{item.displayName}}</td>
+                        <td>{{"Viablidad Traslado"}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" (click)="completarTarea(item.id)"><span> <i class="fa fa-user"></i></span> Procesar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" *ngIf="showDetail" >
+          <form novalidate [formGroup]="datosform" >
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label class="control-label col-xs-">Identificacion</label>
+                    <input class="form-control" formControlName="identificacion" type="text" disabled>
+                  </div>
           </div>
-      </div>
-  </div>
-  <div class="row" *ngIf="showTable">
-    <div class="col-lg-6 col-md-6 col-sm-6">
-        <table datatable [dtOptions]="dtOptions" id="tbTaskList" class="table table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th scope="col">Id Tarea</th>
-                    <th scope="col">Nombre de la tarea</th>
-                    <th scope="col">Nombre Proceso</th>
-                    <th scope="col">Fecha Vencimiento</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of listadoTareas">
-                    <td>{{item.id}}</td>
-                    <td>{{item.displayName}}</td>
-                    <td>{{item.displayName}}</td>
-                    <td>{{item.displayName}}</td>
-                    <td>
-                        <button type="button" class="btn btn-primary" (click)="completarTarea(item.id)"><span> <i class="fa fa-user"></i></span> Aprobar Agenda</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="col-lg-6 col-md-6 col-sm-6" *ngIf="showDetail">
-          <div class="card">
-              <div class="card-header">
-                  Formulario
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label class="control-label col-xs-">Nombres</label>
+                <input class="form-control" formControlName="nombres" type="text" disabled>
               </div>
-              <ul class="list-group list-group-flush">
-                  <div class="row">
-                      <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                          <h1>Agendamiento del dia</h1>
-                      </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label class="control-label col-xs-">Apellidos</label>
+                    <input class="form-control" formControlName="apellidos" type="text" disabled>
                   </div>
-  
-                  <div [formGroup]="form">
-                      <ng-container formArrayName="tasks">
-                          <ng-container *ngFor="let taskForm of tasks?.controls; let i = index">
-                              <h2 class="container">Registro {{i+1}}</h2>
-                              <div class="lesson-form-row" [formGroupName]="i">
-                                  <div class="container row">
-                                      <div class="col-lg-12 col-md-12 col-sm-12">
-                                          <div class="form-group">
-                                              <label for="identificacion">Identificacion</label>
-                                              <input class="form-control" formControlName="identificacion" type="text">
-                                              <input class="form-control" formControlName="id" type="hidden" [value]="i">
-                                          </div>
-                                      </div>
-                                      <div class="col-lg-12 col-md-12 col-sm-12">
-                                          <div class="form-group">
-                                              <label for="aliasAsesor">Alias asesor</label>
-                                              <input class="form-control" formControlName="aliasAsesor" type="text">
-                                          </div>
-                                      </div>
-                                      <div class="col-lg-6 col-md-6 col-sm-6">
-                                          <div class="form-group">
-                                              <label for="fecha">Fecha</label>
-                                              <div class="input-group">
-                                                  <input class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="fecha" ngbDatepicker #d="ngbDatepicker" onkeyPress="return;">
-                                                  <div class="input-group-append">
-                                                      <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="col-lg-6 col-md-3 col-sm-6">
-                                          <div class="form-group">
-                                              <label for="hora">Hora</label>
-                                              <select class="form-control" formControlName="hora">
-                                                <option value="" disabled>SELECCIONE...</option>
-                                                    <option value="07:00">07:00</option>
-                                                    <option value="07:30">07:30</option>
-                                                    <option value="08:00">08:00</option>
-                                                    <option value="08:30">08:30</option>
-                                                    <option value="09:00">09:00</option>
-                                                    <option value="09:30">09:30</option>
-                                                    <option value="10:00">10:00</option>
-                                                    <option value="10:30">10:30</option>
-                                                    <option value="11:00">11:00</option>
-                                                    <option value="11:30">11:30</option>
-                                                    <option value="12:00">12:00</option>
-                                                    <option value="12:30">12:30</option>
-                                                    <option value="13:00">13:00</option>
-                                                    <option value="13:30">13:30</option>
-                                                    <option value="14:00">14:00</option>
-                                                    <option value="14:30">14:30</option>
-                                                    <option value="15:00">15:00</option>
-                                                    <option value="15:30">15:30</option>
-                                                    <option value="16:00">16:00</option>
-                                                    <option value="16:30">16:30</option>
-                                                    <option value="17:00">17:00</option>
-                                                    <option value="17:30">17:30</option>
-                                                  </select>
-                                          </div>
-                                      </div>
-                                      <hr class="mt-5">
-                                  </div>
-                              </div>
-                          </ng-container>
-                      </ng-container>
-                      <div class="container row mb-5 text-center">
-                          <div class="col-lg-6 col-md-6 col-sm-6">
-                              <button class="btn btn-success" (click)="guardarTareas()"><i class="fa fa-save"></i>Guardar</button>
-                          </div>
-                          <div class="col-lg-6 col-md-6 col-sm-6">
-                              <button class="btn btn-secondary" (click)="showDetail = false"><i class="fa fa-ban"></i>Cancelar</button>
-                          </div>
-                      </div>
-                      <!-- <button mat-mini-fab (click)="addLesson()">
-                          <mat-icon class="add-course-btn">add</mat-icon>
-                      </button> -->
-  
-                  </div>
-  
-              </ul>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Alias Asesor</label>
+                        <input class="form-control" formControlName="aliasAsesor" type="text"  disabled>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Fecha</label>
+                        <input class="form-control" formControlName="fecha" type="text" disabled>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Fecha Nacimiento</label>
+                        <input class="form-control" formControlName="fechaNacimiento" type="text" disabled>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Regimen</label>
+                        <select class="form-control" formControlName="regimen">
+                            <option value="SELECCIONE" disabled>SELECCIONE...</option>
+                                <option value="RAIS">Régimen de Ahorro Individual con Solidaridad</option>
+                                <option value="RPM">Régimen de Prima Media</option>
+                              </select>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Tiempo Afiliacion</label>
+                        <input class="form-control" formControlName="tiempoAfiliacion" type="number">
+                        
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Sexo</label>
+                        <input class="form-control" formControlName="sexo" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Respuesta Cliente</label>
+                        <input class="form-control" formControlName="respuestaCliente" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Email</label>
+                        <input class="form-control" formControlName="email" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Direccion</label>
+                              <input class="form-control" formControlName="direccion" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Telefono</label>
+                        <input class="form-control" formControlName="telefono" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-12">Salario</label>
+                        <input class="form-control" formControlName="Salario" type="text">
+                    </div>
+                </div>
+                
+            <div class="container row mt-2 text-center">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                  <button class="btn btn-success" (click)="guardarTareas()"><i class="fa fa-save"></i>Guardar</button>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                  <button class="btn btn-secondary" (click)="showDetail = false"><i class="fa fa-ban"></i>Cancelar</button>
+              </div>
           </div>
-  
-      </div>
-  
-  
+          </form>
+        </div>
   
   
-  
-      </div>
-  
+    </div>
   </div>
   

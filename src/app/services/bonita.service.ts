@@ -10,6 +10,7 @@ import { IUserDetail } from '../interfaces/IUserDetail';
 import { StorageKeys } from '../global/constants/GlobalEnums';
 import { ITaskContext } from '../interfaces/ITaskContext';
 import { ITaskDataDetail } from '../interfaces/ITaskDataDetail';
+import { IViabilidadTraslado } from '../interfaces/IViabilidadTraslado';
 @Injectable({
   providedIn: 'root'
 })
@@ -89,6 +90,13 @@ export class BonitaService {
     return this.http.get<IDobleAsesoria>(endpoint, { withCredentials: true });
   }
 
+  public obtenerViabilidadTraslado(urlInformacion: string): Observable<IViabilidadTraslado> {
+    const endpoint: string = environment.services.urlBase + "/" + urlInformacion
+    return this.http.get<IDobleAsesoria>(endpoint, { withCredentials: true });
+  }
+
+  
+
   public guardarDobleAsesoria(idTarea: string, data: any): Observable<any> {
     const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
     const endpoint: string = environment.services.urlBase + environment.services.post.ejecutarTareaDelDia + idTarea + "/execution"
@@ -96,7 +104,40 @@ export class BonitaService {
     const obj =
     {
       "registroActividad": {
-          "resultadoDobleAsesoria":data
+        "resultadoDobleAsesoria": data
+      }
+    }
+
+    console.log(JSON.stringify(obj))
+    return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
+  }
+
+  public guardarAsesorLlama(idTarea: string, data: any): Observable<any> {
+    const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
+    const endpoint: string = environment.services.urlBase + environment.services.post.ejecutarTareaDelDia + idTarea + "/execution"
+
+    const obj =
+    {
+      "registroActividad": {
+        "respuestaCliente": data
+      }
+    }
+
+    console.log(endpoint);
+    console.log(JSON.stringify(obj))
+    return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
+  }
+
+  public guardarViabilidadTraslado(idTarea: string, regimen: any, tiempoAfiliacion: any, salario: any): Observable<any> {
+    const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
+    const endpoint: string = environment.services.urlBase + environment.services.post.ejecutarTareaDelDia + idTarea + "/execution"
+
+    const obj =
+    {
+      "registroActividad": {
+        "regimen": regimen,
+        "tiempoAfiliacion": tiempoAfiliacion,
+        "salario": salario
       }
     }
 
