@@ -50,7 +50,9 @@ export class AgendarVisitaComponent implements OnInit {
   cargarMisTareas(): void {
     this.bonitaService.getTaskList(this.userDetail.id || "", "Agendar visita").subscribe({
       next: result => {
-        //result = result.filter(x => this.userDetail.id == x.assigned_id);
+       // console.log( this.userDetail.id)
+        result = result.filter(x => this.userDetail.id == x.assigned_id);
+        this.listadoTareas = result
         this.showTable = result.length > 0
         this.loading = false;
       },
@@ -103,7 +105,7 @@ export class AgendarVisitaComponent implements OnInit {
     this.datosform?.controls.tiempoAfiliacion.setValue(detalleTareas.tiempoAfiliacion)
     this.datosform?.controls.respuestaCliente.setValue(detalleTareas.respuestaCliente)
     this.datosform?.controls.resultadoViabilidad.setValue(detalleTareas.resultadoViabilidad)
-    this.datosform?.controls.salario.setValue("$ " + detalleTareas.salario)
+    this.datosform?.controls.salario.setValue(detalleTareas.salario)
     this.datosform?.controls.alternativaSeleccionada.setValue(detalleTareas.alternativaSeleccionada)
 
     this.showDetail = true;

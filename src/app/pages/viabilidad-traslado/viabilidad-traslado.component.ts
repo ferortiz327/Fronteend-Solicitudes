@@ -52,7 +52,7 @@ export class ViabilidadTrasladoComponent implements OnInit {
 cargarMisTareas(): void {
   this.bonitaService.getTaskList(this.userDetail.id || "","Consultar viabilidad del traslado").subscribe({
     next: result => {
-      //result = result.filter(x => this.userDetail.id == x.assigned_id);
+      result = result.filter(x => this.userDetail.id == x.assigned_id);
       this.listadoTareas = result
       this.showTable = result.length > 0
       this.loading = false;

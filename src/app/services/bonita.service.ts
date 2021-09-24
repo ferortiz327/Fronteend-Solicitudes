@@ -58,7 +58,6 @@ export class BonitaService {
     else{
       endpoint = environment.services.urlBase + environment.services.get.taskByUser + userId;
     }
-    console.log(endpoint);
     return this.http.get<ITaskDetail[]>(endpoint, { withCredentials: true });
   }
 

@@ -24,6 +24,8 @@ import { DobleasesoriaComponent } from './pages/dobleasesoria/dobleasesoria.comp
 import { DarAconocerComponent } from './pages/dar-aconocer/dar-aconocer.component';
 import { AgendarVisitaComponent } from './pages/agendar-visita/agendar-visita.component';
 import { AsesorarClienteComponent } from './pages/asesorar-cliente/asesorar-cliente.component';
+import { TrasladoElectronicoComponent } from './pages/traslado-electronico/traslado-electronico.component';
+import { TrasladoVisitaComponent } from './pages/traslado-visita/traslado-visita.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { AsesorarClienteComponent } from './pages/asesorar-cliente/asesorar-clie
     DobleasesoriaComponent,
     DarAconocerComponent,
     AgendarVisitaComponent,
-    AsesorarClienteComponent
+    AsesorarClienteComponent,
+    TrasladoElectronicoComponent,
+    TrasladoVisitaComponent
   ],
   imports: [
     BrowserModule,
