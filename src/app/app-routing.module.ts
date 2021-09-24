@@ -1,3 +1,5 @@
+import { TrasladoVisitaComponent } from './pages/traslado-visita/traslado-visita.component';
+import { TrasladoElectronicoComponent } from './pages/traslado-electronico/traslado-electronico.component';
 import { AsesorarClienteComponent } from './pages/asesorar-cliente/asesorar-cliente.component';
 import { AgendarVisitaComponent } from './pages/agendar-visita/agendar-visita.component';
 import { DarAconocerComponent } from './pages/dar-aconocer/dar-aconocer.component';
@@ -26,7 +28,9 @@ const routes: Routes = [
   { path: 'dobleasesoria', component: DobleasesoriaComponent, canActivate:[AuthenticationGuard],},
   { path: 'dar-aconocer', component: DarAconocerComponent, canActivate:[AuthenticationGuard],},
   { path: 'asesorar-cliente', component: AsesorarClienteComponent, canActivate:[AuthenticationGuard],},
+  { path: 'traslado-electronico', component: TrasladoElectronicoComponent, canActivate:[AuthenticationGuard],},
   { path: 'agendar-visita', component: AgendarVisitaComponent, canActivate:[AuthenticationGuard],},
+  { path: 'traslado-visita', component: TrasladoVisitaComponent, canActivate:[AuthenticationGuard],},
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 
