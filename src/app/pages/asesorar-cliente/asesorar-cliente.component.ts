@@ -47,10 +47,10 @@ export class AsesorarClienteComponent implements OnInit {
     this.cargarMisTareas();
   }
   cargarMisTareas(): void {
-    this.bonitaService.getTaskList(this.userDetail.id || "").subscribe({
+    this.bonitaService.getTaskList(this.userDetail.id || "","Asesorar al cliente en el traslado electrónico y registrar en CRM la oportunidad de venta").subscribe({
       next: result => {
-        result = result.filter(x => this.userDetail.id == x.assigned_id);
-        this.listadoTareas = result.filter(x => x.displayName == "Asesorar al cliente en el traslado electrónico y registrar en CRM la oportunidad de venta")
+        //result = result.filter(x => this.userDetail.id == x.assigned_id);
+
         this.listadoTareas = result
         this.showTable = result.length > 0
         this.loading = false;

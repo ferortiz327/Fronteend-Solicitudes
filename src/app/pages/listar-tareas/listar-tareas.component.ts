@@ -30,9 +30,9 @@ export class ListarTareasComponent implements OnInit {
   }
 
   loadTaskLists(): void {
-    this.bonitaService.getTaskList(this.userDetail.id || "").subscribe({
+    this.bonitaService.getTaskList(this.userDetail.id || "","Agendamiento del día").subscribe({
       next: result => {
-        result = result.filter(x => !x.assigned_id);
+       // result = result.filter(x => !x.assigned_id);
         this.listadoTareas = result
         this.showTable = result.length > 0
         this.loading = false;

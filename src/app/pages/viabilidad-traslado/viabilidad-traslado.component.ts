@@ -50,9 +50,9 @@ export class ViabilidadTrasladoComponent implements OnInit {
   this.cargarMisTareas();
 }
 cargarMisTareas(): void {
-  this.bonitaService.getTaskList(this.userDetail.id || "").subscribe({
+  this.bonitaService.getTaskList(this.userDetail.id || "","Consultar viabilidad del traslado").subscribe({
     next: result => {
-      result = result.filter(x => this.userDetail.id == x.assigned_id);
+      //result = result.filter(x => this.userDetail.id == x.assigned_id);
       this.listadoTareas = result
       this.showTable = result.length > 0
       this.loading = false;
@@ -110,8 +110,8 @@ agregarTareasParaEditar(detalleTareas: IViabilidadTraslado): void {
   this.datosform?.controls.telefono.setValue(detalleTareas.telefono)
   this.datosform?.controls.salario.setValue(detalleTareas.salario)
 
-  
-  
+
+
  // this.datosform?.controls.resultadoDobleAsesoria.setValue("SELECCIONE")
   this.showDetail = true;
 }
@@ -141,7 +141,7 @@ guardarTareas(): void {
     this.cargarMisTareas();
   }
 
-  
+
   this.bonitaService.guardarViabilidadTraslado(this.idTarea, regimen, tiempoAfiliacion,salario).subscribe({
     next: () => {
       this.showDetail = false;
@@ -150,5 +150,5 @@ guardarTareas(): void {
     error: error => AlertUtilities.showAlert({ title: "Completar Viabilidad Traslado", icon: IconAlerts.error, message: "Ocurrio un error al guardar el detalle de la informacion de la tarea.Error=" + JSON.stringify(error.message) })    })
 
   }
-  
+
 }

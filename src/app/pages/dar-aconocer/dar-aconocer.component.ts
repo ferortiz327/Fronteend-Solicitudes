@@ -48,10 +48,9 @@ export class DarAconocerComponent implements OnInit {
     this.cargarMisTareas();
   }
   cargarMisTareas(): void {
-    this.bonitaService.getTaskList(this.userDetail.id || "").subscribe({
+    this.bonitaService.getTaskList(this.userDetail.id || "", "Dar a conocer al cliente las diferentes alternativas para iniciar el proceso de traslado.").subscribe({
       next: result => {
-        result = result.filter(x => this.userDetail.id == x.assigned_id);
-        this.listadoTareas = result.filter(x => x.displayName == "Dar a conocer al cliente las diferentes alternativas para iniciar el proceso de traslado.")
+        //result = result.filter(x => this.userDetail.id == x.assigned_id);
         this.listadoTareas = result
         this.showTable = result.length > 0
         this.loading = false;
