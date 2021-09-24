@@ -104,7 +104,7 @@ export class DarAconocerComponent implements OnInit {
     this.datosform?.controls.tiempoAfiliacion.setValue(detalleTareas.tiempoAfiliacion)
     this.datosform?.controls.respuestaCliente.setValue(detalleTareas.respuestaCliente)
     this.datosform?.controls.resultadoViabilidad.setValue(detalleTareas.resultadoViabilidad)
-    this.datosform?.controls.salario.setValue("$ " + detalleTareas.salario)
+    this.datosform?.controls.salario.setValue(detalleTareas.salario)
     this.datosform?.controls.alternativaSeleccionada.setValue("SELECCIONE")
     this.showDetail = true;
   }
