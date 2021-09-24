@@ -1,0 +1,137 @@
+<div class="container mt-2" *ngIf="loading">
+  <div class="row mt-5">
+      <div class="col-lg-12 col-md-12 col-sm-12 text-center ">
+          <div class="spinner-border text-success" style="width: 13rem; height: 13rem;" role="status">
+          </div>
+      </div>
+  </div>
+</div>
+<div class="container mt-5" *ngIf="!loading">
+  <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+          <h1>Dar a Conocer Alternativas de Traslado</h1>
+      </div>
+  </div>
+  <div class="row" *ngIf="!showTable">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="alert alert-secondary" role="alert">
+              No existen tareas asignadas
+          </div>
+      </div>
+  </div>
+  <div class="row" *ngIf="showTable">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+          <table datatable [dtOptions]="dtOptions" id="tbTaskList" class="table table-striped" style="width:100%">
+              <thead>
+                  <tr>
+                      <th scope="col">Id Tarea</th>
+                      <th scope="col">Nombre de la tarea</th>
+                      <th scope="col">Proceso</th>
+                      <th scope="col">Completar</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of listadoTareas">
+                      <td>{{item.id}}</td>
+                      <td>{{item.displayName}}</td>
+                      <td>{{"Dar a Conocer Alternativas de Traslado"}}</td>
+                      <td>
+                          <button type="button" class="btn btn-primary" (click)="completarTarea(item.id)"><span> <i class="fa fa-user"></i></span> Procesar</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6" *ngIf="showDetail" >
+        <form novalidate [formGroup]="datosform" >
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="identificacion">Identificacion</label>
+                <input class="form-control" disabled formControlName="identificacion" type="text">
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="form-group">
+              <label for="nombres">Nombres</label>
+              <input class="form-control" disabled formControlName="nombres" type="text">
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="form-group">
+              <label for="apellidos">Apellidos</label>
+              <input class="form-control" disabled formControlName="apellidos" type="text">
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="form-group">
+              <label for="aliasAsesor">Alias Asesor</label>
+              <input class="form-control" disabled formControlName="aliasAsesor" type="text">
+          </div>
+         </div>
+         <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input class="form-control" disabled formControlName="fecha" type="text">
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="tipoGestion">Tipo Gestion</label>
+                <input class="form-control" disabled formControlName="tipoGestion" type="text">
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="regimen">Regimen</label>
+                <input class="form-control" disabled formControlName="regimen" type="text">
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="tiempoAfiliacion">Tiempo Afiliacion</label>
+                <input class="form-control" disabled formControlName="tiempoAfiliacion" type="text">
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="respuestaCliente">Respuesta Cliente</label>
+                <input class="form-control" disabled formControlName="respuestaCliente" type="text">
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="resultadoViabilidad">Resultado Viabilidad</label>
+                <input class="form-control" disabled formControlName="resultadoViabilidad" type="text">
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="salario">Salario</label>
+                <input class="form-control" disabled formControlName="salario" type="text">
+            </div>
+          </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="form-group">
+              <label for="alternativaSeleccionada">Alternativa Seleccionada</label>
+              <select class="form-control" formControlName="alternativaSeleccionada">
+                <option value="SELECCIONE" disabled>SELECCIONE...</option>
+                    <option value="Traslado">Traslado</option>
+                    <option value="Visitar">Visitar</option>
+                  </select>
+          </div>
+      </div>
+          <div class="container row mt-2 text-center">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <button class="btn btn-success" (click)="guardarTareas()"><i class="fa fa-save"></i>Guardar</button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <button class="btn btn-secondary" (click)="showDetail = false"><i class="fa fa-ban"></i>Cancelar</button>
+            </div>
+        </div>
+        </form>
+      </div>
+
+
+  </div>
+</div>
+

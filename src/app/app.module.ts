@@ -21,6 +21,9 @@ import { AprobartareaComponent } from './pages/aprobartarea/aprobartarea.compone
 import { AsesorllamaComponent } from './pages/asesorllama/asesorllama.component';
 import { ViabilidadTrasladoComponent } from './pages/viabilidad-traslado/viabilidad-traslado.component';
 import { DobleasesoriaComponent } from './pages/dobleasesoria/dobleasesoria.component';
+import { DarAconocerComponent } from './pages/dar-aconocer/dar-aconocer.component';
+import { AgendarVisitaComponent } from './pages/agendar-visita/agendar-visita.component';
+import { AsesorarClienteComponent } from './pages/asesorar-cliente/asesorar-cliente.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { DobleasesoriaComponent } from './pages/dobleasesoria/dobleasesoria.comp
     AprobartareaComponent,
     AsesorllamaComponent,
     ViabilidadTrasladoComponent,
-    DobleasesoriaComponent
+    DobleasesoriaComponent,
+    DarAconocerComponent,
+    AgendarVisitaComponent,
+    AsesorarClienteComponent
   ],
   imports: [
     BrowserModule,
