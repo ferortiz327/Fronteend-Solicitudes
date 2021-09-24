@@ -39,7 +39,7 @@ export class MisTareasComponent implements OnInit {
     this.cargarMisTareas();
   }
   cargarMisTareas(): void {
-    this.bonitaService.getTaskList(this.userDetail.id || "").subscribe({
+    this.bonitaService.getTaskList(this.userDetail.id || "","Agendamiento del día").subscribe({
       next: result => {
         result = result.filter(x => this.userDetail.id == x.assigned_id);
         this.listadoTareas = result
@@ -125,7 +125,7 @@ export class MisTareasComponent implements OnInit {
       datos.push({
         persistenceId_string: element.persistenceId_string,
         aliasAsesor: element.aliasAsesor,
-        fecha: element.fecha.year + "-" + (element.fecha.month <= 9 ? "0" + element.fecha.month : element.fecha.month) + "-" + (element.fecha.day <= 9 ? "0" + element.fecha.day : element.fecha.day) + "T" + element.hora + ":00",
+        fecha: element.fecha + "T" + element.hora + ":00",     //element.fecha.year + "-" + (element.fecha.month <= 9 ? "0" + element.fecha.month : element.fecha.month) + "-" + (element.fecha.day <= 9 ? "0" + element.fecha.day : element.fecha.day) + "T" + element.hora + ":00",
         tipoGestion: "Llamada",
         identificacion: element.identificacion
       })

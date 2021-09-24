@@ -9,7 +9,7 @@
 <div class="container mt-5" *ngIf="!loading">
   <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
-          <h1>Dar a Conocer Alternativas de Traslado</h1>
+          <h1>Traslado Electronico</h1>
       </div>
   </div>
   <div class="row" *ngIf="!showTable">
@@ -34,7 +34,7 @@
                   <tr *ngFor="let item of listadoTareas">
                       <td>{{item.id}}</td>
                       <td>{{item.displayName}}</td>
-                      <td>{{"Dar a Conocer Alternativas de Traslado"}}</td>
+                      <td>{{"Traslado Electronico"}}</td>
                       <td>
                           <button type="button" class="btn btn-primary" (click)="completarTarea(item.id)"><span> <i class="fa fa-user"></i></span> Procesar</button>
                       </td>
@@ -94,29 +94,28 @@
           </div>
           <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="form-group">
-                <label for="respuestaCliente">Respuesta Cliente</label>
-                <input class="form-control" disabled formControlName="respuestaCliente" type="text">
-            </div>
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="form-group">
                 <label for="resultadoViabilidad">Resultado Viabilidad</label>
                 <input class="form-control" disabled formControlName="resultadoViabilidad" type="text">
             </div>
           </div>
           <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="form-group">
-                <label for="salario">Salario</label>
-                <input class="form-control" disabled formControlName="salario" type="text">
+                <label for="alternativaSeleccionada">Alternativa Seleccionada</label>
+                <input class="form-control" disabled formControlName="alternativaSeleccionada" type="text">
             </div>
           </div>
-        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group">
+                <label for="solicitudInmediata">Solicitud Inmediata</label>
+                <input class="form-control" disabled formControlName="solicitudInmediata" type="text">
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
           <div class="form-group">
-              <label for="alternativaSeleccionada">Alternativa Seleccionada</label>
-              <select class="form-control" formControlName="alternativaSeleccionada">
+              <label for="solicitudRegistrada">Solicitud Registrada</label>
+              <select class="form-control" formControlName="solicitudRegistrada">
                 <option value="SELECCIONE" disabled>SELECCIONE...</option>
-                    <option value="Traslado">Traslado Electrónico</option>
-                    <option value="Visitar">Visitar</option>
+                    <option value="Exitoso">Exitoso</option>
                   </select>
           </div>
       </div>
@@ -134,4 +133,3 @@
 
   </div>
 </div>
-

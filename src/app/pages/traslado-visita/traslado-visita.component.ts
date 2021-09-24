@@ -11,11 +11,11 @@ import { AlertUtilities } from 'src/app/shared/utilities/AlertUtilities';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-asesorar-cliente',
-  templateUrl: './asesorar-cliente.component.html',
-  styleUrls: ['./asesorar-cliente.component.css']
+  selector: 'app-traslado-visita',
+  templateUrl: './traslado-visita.component.html',
+  styleUrls: ['./traslado-visita.component.css']
 })
-export class AsesorarClienteComponent implements OnInit {
+export class TrasladoVisitaComponent implements OnInit {
   datosform = new FormGroup({
     identificacion: new FormControl(""),
     nombres: new FormControl(""),
@@ -25,13 +25,13 @@ export class AsesorarClienteComponent implements OnInit {
     tipoGestion: new FormControl(""),
     regimen: new FormControl(""),
     tiempoAfiliacion: new FormControl(""),
-    respuestaCliente: new FormControl(""),
     resultadoViabilidad: new FormControl(""),
-    salario: new FormControl(""),
     alternativaSeleccionada: new FormControl(""),
-    solicitudInmediata: new FormControl(""),
- })
+    fechaVisita: new FormControl(""),
+    solicitudRegistrada: new FormControl(""),
 
+ })
+  fechaAgenda: string = ""
   loading: boolean = true;
   listadoTareas: ITaskDetail[] = []
   dtOptions: DataTables.Settings = {};
@@ -47,7 +47,7 @@ export class AsesorarClienteComponent implements OnInit {
     this.cargarMisTareas();
   }
   cargarMisTareas(): void {
-    this.bonitaService.getTaskList(this.userDetail.id || "","Asesorar al cliente en el traslado electrónico y registrar en CRM la oportunidad de venta").subscribe({
+    this.bonitaService.getTaskList(this.userDetail.id || "","Visitar cliente, diligenciar formalurarios, registrar oportunidad CRM").subscribe({
       next: result => {
         result = result.filter(x => this.userDetail.id == x.assigned_id);
 
@@ -94,6 +94,23 @@ export class AsesorarClienteComponent implements OnInit {
 
   agregarTareasParaEditar(detalleTareas: IDobleAsesoria): void {
 
+    let y: string;
+    let m: number;
+    let m1: string;
+    let d1: string;
+    let d: number;
+    let v: string;
+    v = "{year=2021, month=12, day=20}"   //detalleTareas.fechaVisita;
+    y = v.substring(6,10)
+    m1 = v.substring(18,20)
+    m = parseInt(m1.replace(",","").replace("=",""))
+    d1 = v.substring(25,27)
+    d = parseInt(d1.replace("}","").replace("=",""))
+    // {year=2021, month=9, day=2}
+    //console.log(d1);
+
+    this.fechaAgenda = y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
+
     this.datosform?.controls.identificacion.setValue(detalleTareas.identificacion)
     this.datosform?.controls.nombres.setValue(detalleTareas.nombres)
     this.datosform?.controls.apellidos.setValue(detalleTareas.apellidos)
@@ -102,32 +119,31 @@ export class AsesorarClienteComponent implements OnInit {
     this.datosform?.controls.tipoGestion.setValue(detalleTareas.tipoGestion)
     this.datosform?.controls.regimen.setValue(detalleTareas.regimen)
     this.datosform?.controls.tiempoAfiliacion.setValue(detalleTareas.tiempoAfiliacion)
-    this.datosform?.controls.respuestaCliente.setValue(detalleTareas.respuestaCliente)
     this.datosform?.controls.resultadoViabilidad.setValue(detalleTareas.resultadoViabilidad)
-    this.datosform?.controls.salario.setValue(detalleTareas.salario)
     this.datosform?.controls.alternativaSeleccionada.setValue(detalleTareas.alternativaSeleccionada)
-    this.datosform?.controls.solicitudInmediata.setValue("SELECCIONE")
+    this.datosform?.controls.fechaVisita.setValue(this.fechaAgenda)
+    this.datosform?.controls.solicitudRegistrada.setValue("SELECCIONE")
     this.showDetail = true;
   }
 
   guardarTareas(): void {
 
-    const resultado = this.datosform.controls.solicitudInmediata.value;
+    const resultado = this.datosform.controls.solicitudRegistrada.value;
 
 
     if (resultado == "SELECCIONE")
-    {AlertUtilities.showAlert({title:"Validación Asesorar Cliente",icon: IconAlerts.warning, message:"Debe seleccionar una opción de solicitud inmediata"})}
-    console.log(resultado)
+    {AlertUtilities.showAlert({title:"Validación Traslado",icon: IconAlerts.warning, message:"Debe seleccionar una opción de solicitud Resgitrada"})}
+    //console.log(resultado)
 
     const listarMisTareas = (): void => {
       this.cargarMisTareas();
     }
-    this.bonitaService.guardarAsesorarCliente(this.idTarea, resultado).subscribe({
+    this.bonitaService.guardarTraslado(this.idTarea, resultado).subscribe({
       next: () => {
         this.showDetail = false;
-        AlertUtilities.showAlert({ title: "Completar Asesorar Cliente", icon: IconAlerts.success, message: "Se ha completado la tarea satisfactoriamente", functionAfterConfirm: listarMisTareas })
+        AlertUtilities.showAlert({ title: "Completar Traslado", icon: IconAlerts.success, message: "Se ha completado la tarea satisfactoriamente", functionAfterConfirm: listarMisTareas })
       },
-      error: error => AlertUtilities.showAlert({ title: "Completar doble asesoría", icon: IconAlerts.error, message: "Ocurrio un error al guardar el detalle de la informacion de la tarea.Error=" + JSON.stringify(error.message) })    })
+      error: error => AlertUtilities.showAlert({ title: "Completar Traslado", icon: IconAlerts.error, message: "Ocurrio un error al guardar el detalle de la informacion de la tarea.Error=" + JSON.stringify(error.message) })    })
 
   }
 

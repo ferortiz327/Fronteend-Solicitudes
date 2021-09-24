@@ -38,7 +38,7 @@ export class DobleasesoriaComponent implements OnInit {
     this.cargarMisTareas();
   }
   cargarMisTareas(): void {
-    this.bonitaService.getTaskList(this.userDetail.id || "").subscribe({
+    this.bonitaService.getTaskList(this.userDetail.id || "","Procesar doble asesoría").subscribe({
       next: result => {
         result = result.filter(x => this.userDetail.id == x.assigned_id);
         this.listadoTareas = result

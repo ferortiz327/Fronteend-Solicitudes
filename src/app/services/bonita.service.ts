@@ -50,8 +50,14 @@ export class BonitaService {
     return this.http.get<IUserDetail>(endpoint, { withCredentials: true });
   }
 
-  public getTaskList(userId: string): Observable<ITaskDetail[]> {
-    const endpoint: string = environment.services.urlBase + environment.services.get.taskByUser + userId;
+  public getTaskList(userId: string, taskname: string): Observable<ITaskDetail[]> {
+    let endpoint: string = "";
+    if(taskname != ""){
+      endpoint = environment.services.urlBase + environment.services.get.taskByUser + userId + "&f=name=" + taskname;
+    }
+    else{
+      endpoint = environment.services.urlBase + environment.services.get.taskByUser + userId;
+    }
     return this.http.get<ITaskDetail[]>(endpoint, { withCredentials: true });
   }
 
@@ -95,7 +101,7 @@ export class BonitaService {
     return this.http.get<IDobleAsesoria>(endpoint, { withCredentials: true });
   }
 
-  
+
 
   public guardarDobleAsesoria(idTarea: string, data: any): Observable<any> {
     const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
@@ -183,6 +189,21 @@ export class BonitaService {
     {
       "registroActividad": {
           "solicitudInmediata":data
+      }
+    }
+
+    console.log(JSON.stringify(obj))
+    return this.http.post<any>(endpoint, obj, { headers: headers, withCredentials: true });
+  }
+
+  public guardarTraslado(idTarea: string, data: any): Observable<any> {
+    const headers = new HttpHeaders().set("X-Bonita-API-Token", this.cookieService.get(StorageKeys.X_BONITA_API_TOKEN))
+    const endpoint: string = environment.services.urlBase + environment.services.post.ejecutarTareaDelDia + idTarea + "/execution"
+
+    const obj =
+    {
+      "registroActividad": {
+          "solicitudRegistrada":data
       }
     }
 

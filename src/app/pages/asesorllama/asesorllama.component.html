@@ -52,37 +52,68 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="form-group">
-                  <label for="nombres">Nombres</label>
+                  <label class="control-label col-xs-">Nombres</label>
                   <input class="form-control" formControlName="nombres" type="text" disabled>
+                </div>
               </div>
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="form-group">
-                <label for="aliasAsesor">Alias Asesor</label>
-                <input class="form-control" formControlName="aliasAsesor" type="text" disabled>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-group">
+                      <label class="control-label col-xs-">Apellidos</label>
+                      <input class="form-control" formControlName="apellidos" type="text" disabled>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="form-group">
+                          <label class="control-label col-xs-">Fecha Nacimiento</label>
+                          <input class="form-control" formControlName="fechaNacimiento" type="text" disabled>
+                      </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Email</label>
+                        <input class="form-control" formControlName="email" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Direccion</label>
+                              <input class="form-control" formControlName="direccion" type="text" disabled>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label col-xs-">Telefono</label>
+                        <input class="form-control" formControlName="telefono" type="text" disabled>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-group">
+                      <label class="control-label col-xs-">Sexo</label>
+                      <input class="form-control" formControlName="sexo" type="text" disabled>
+                  </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label for="respuestaCliente">Seleccione una Respuesta</label>
+                    <select class="form-control" formControlName="respuestaCliente">
+                      <option value="SELECCIONE" disabled>SELECCIONE...</option>
+                          <option value="No contesta">No contesta</option>
+                          <option value="No muestra interés">No muestra interés</option>
+                          <option value="Demuestra interés">Demuestra interés</option>
+                        </select>
+                </div>
             </div>
-        </div>
-          <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="form-group">
-                <label for="respuestaCliente">Resultado Doble Asesoria</label>
-                <select class="form-control" formControlName="respuestaCliente">
-                  <option value="SELECCIONE" disabled>SELECCIONE...</option>
-                      <option value="No contesta">No contesta</option>
-                      <option value="No muestra interés">No muestra interés</option>
-                      <option value="Demuestra interés">Demuestra interés</option>
-                    </select>
+                <div class="container row mt-2 text-center">
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                      <button class="btn btn-success" (click)="guardarTareas()"><i class="fa fa-save"></i>Guardar</button>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                      <button class="btn btn-secondary" (click)="showDetail = false"><i class="fa fa-ban"></i>Cancelar</button>
+                  </div>
+              </div>
+              </form>
             </div>
-        </div>
-            <div class="container row mt-2 text-center">
-              <div class="col-lg-6 col-md-6 col-sm-6">
-                  <button class="btn btn-success" (click)="guardarTareas()"><i class="fa fa-save"></i>Guardar</button>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-6">
-                  <button class="btn btn-secondary" (click)="showDetail = false"><i class="fa fa-ban"></i>Cancelar</button>
-              </div>
-          </div>
-          </form>
-        </div>
-    </div>
+      </div>
   </div>
-  

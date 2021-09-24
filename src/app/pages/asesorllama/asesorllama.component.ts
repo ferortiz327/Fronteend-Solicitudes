@@ -12,14 +12,19 @@ import { IAsesorLlama } from 'src/app/interfaces/IAsesorLlama';
 
 @Component({
   selector: 'app-asesorllama',
-  templateUrl: './Asesorllama.component.html',
+  templateUrl: './asesorllama.component.html',
   styleUrls: ['./asesorllama.component.css']
 })
 export class AsesorllamaComponent implements OnInit {
   datosform = new FormGroup({
     identificacion: new FormControl(""),
     nombres: new FormControl(""),
-    aliasAsesor: new FormControl(""),
+    apellidos: new FormControl(""),
+    fechaNacimiento: new FormControl(""),
+    email: new FormControl(""),
+    direccion: new FormControl(""),
+    telefono: new FormControl(""),
+    sexo: new FormControl(""),
     respuestaCliente: new FormControl("")
  })
 
@@ -41,7 +46,7 @@ export class AsesorllamaComponent implements OnInit {
     this.cargarMisTareas();
   }
   cargarMisTareas(): void {
-    this.bonitaService.getTaskList(this.userDetail.id || "").subscribe({
+    this.bonitaService.getTaskList(this.userDetail.id || "","Consultar datos del prospecto en el CRM y contactarlo vía telefónica").subscribe({
       next: result => {
         result = result.filter(x => this.userDetail.id == x.assigned_id);
         this.listadoTareas = result
@@ -88,7 +93,12 @@ export class AsesorllamaComponent implements OnInit {
 
     this.datosform?.controls.identificacion.setValue(detalleTareas.identificacion)
     this.datosform?.controls.nombres.setValue(detalleTareas.nombres)
-    this.datosform?.controls.aliasAsesor.setValue(detalleTareas.aliasAsesor)
+    this.datosform?.controls.apellidos.setValue(detalleTareas.apellidos)
+    this.datosform?.controls.fechaNacimiento.setValue(detalleTareas.fechaNacimiento)
+    this.datosform?.controls.email.setValue(detalleTareas.email)
+    this.datosform?.controls.direccion.setValue(detalleTareas.direccion)
+    this.datosform?.controls.telefono.setValue(detalleTareas.telefono)
+    this.datosform?.controls.sexo.setValue(detalleTareas.sexo)
     this.datosform?.controls.respuestaCliente.setValue("SELECCIONE")
     this.showDetail = true;
   }
