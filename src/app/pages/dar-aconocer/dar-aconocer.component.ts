@@ -113,7 +113,6 @@ export class DarAconocerComponent implements OnInit {
 
     const resultado = this.datosform.controls.alternativaSeleccionada.value;
 
-
     if (resultado == "SELECCIONE")
     {AlertUtilities.showAlert({title:"Validación Dar a Conocer Traslado",icon: IconAlerts.warning, message:"Debe seleccionar una opción de traslado"})}
 

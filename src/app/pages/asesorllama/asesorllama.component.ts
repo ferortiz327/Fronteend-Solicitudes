@@ -19,7 +19,12 @@ export class AsesorllamaComponent implements OnInit {
   datosform = new FormGroup({
     identificacion: new FormControl(""),
     nombres: new FormControl(""),
-    aliasAsesor: new FormControl(""),
+    apellidos: new FormControl(""),
+    fechaNacimiento: new FormControl(""),
+    email: new FormControl(""),
+    direccion: new FormControl(""),
+    telefono: new FormControl(""),
+    sexo: new FormControl(""),
     respuestaCliente: new FormControl("")
  })
 
@@ -88,7 +93,12 @@ export class AsesorllamaComponent implements OnInit {
 
     this.datosform?.controls.identificacion.setValue(detalleTareas.identificacion)
     this.datosform?.controls.nombres.setValue(detalleTareas.nombres)
-    this.datosform?.controls.aliasAsesor.setValue(detalleTareas.aliasAsesor)
+    this.datosform?.controls.apellidos.setValue(detalleTareas.apellidos)
+    this.datosform?.controls.fechaNacimiento.setValue(detalleTareas.fechaNacimiento)
+    this.datosform?.controls.email.setValue(detalleTareas.email)
+    this.datosform?.controls.direccion.setValue(detalleTareas.direccion)
+    this.datosform?.controls.telefono.setValue(detalleTareas.telefono)
+    this.datosform?.controls.sexo.setValue(detalleTareas.sexo)
     this.datosform?.controls.respuestaCliente.setValue("SELECCIONE")
     this.showDetail = true;
   }
