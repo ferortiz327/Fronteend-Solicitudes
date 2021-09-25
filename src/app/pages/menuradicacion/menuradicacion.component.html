@@ -4,17 +4,20 @@
   <div class="sidebar" *ngIf="mostrarmenu">
     <div class="list-items">
 
-      <a routerLink="/listar-tareas" class="list-item"><i class="material-icons">bookmark</i>Listar Tareas</a>
-      <a routerLink="/mis-tareas" class="list-item"><i class="material-icons">bookmark</i>Asignar Tareas</a>
-      <a routerLink="/aprobartareas" class="list-item"><i class="material-icons">bookmark</i>Aprobar Tareas</a>
-      <a routerLink="/asesorllama" class="list-item"><i class="material-icons">bookmark</i>Llamada Asesor</a>
-      <a routerLink="/viabilidad-traslado" class="list-item"><i class="material-icons">bookmark</i>Viablidad Traslado</a>
-      <a routerLink="/dobleasesoria" class="list-item"><i class="material-icons">bookmark</i>Doble Asesoría</a>
-      <a routerLink="/dar-aconocer" class="list-item"><i class="material-icons">bookmark</i>Dar a Conocer Traslado</a>
-      <a routerLink="/asesorar-cliente" class="list-item"><i class="material-icons">bookmark</i>Asesorar Cliente</a>
-      <a routerLink="/traslado-electronico" class="list-item"><i class="material-icons">bookmark</i>Traslado Electronico</a>
-      <a routerLink="/agendar-visita" class="list-item"><i class="material-icons">bookmark</i>Agendar Visita</a>
-      <a routerLink="/traslado-visita" class="list-item"><i class="material-icons">bookmark</i>Traslado Visita</a>
+
+      <a *ngIf="listarTareas" routerLink="/listar-tareas" class="list-item"><i class="material-icons">bookmark</i>Listar Tareas</a>
+      <a *ngIf="asignarTareas" routerLink="/mis-tareas" class="list-item"><i class="material-icons">bookmark</i>Asignar Tareas</a>
+      <a *ngIf="aprobarTareas" routerLink="/aprobartareas" class="list-item"><i class="material-icons">bookmark</i>Aprobar Tareas</a>
+      <a *ngIf="llamarAsesor" routerLink="/asesorllama" class="list-item"><i class="material-icons">bookmark</i>Llamada Asesor</a>
+      <a *ngIf="viabilidadTraslado" routerLink="/viabilidad-traslado" class="list-item"><i class="material-icons">bookmark</i>Viablidad Traslado</a>
+      <a *ngIf="dobleAsesoria" routerLink="/dobleasesoria" class="list-item"><i class="material-icons">bookmark</i>Doble Asesoría</a>
+      <a *ngIf="conocerTraslados" routerLink="/dar-aconocer" class="list-item"><i class="material-icons">bookmark</i>Dar a Conocer Traslado</a>
+      <a *ngIf="asesorarCliente" routerLink="/asesorar-cliente" class="list-item"><i class="material-icons">bookmark</i>Asesorar Cliente</a>
+      <a *ngIf="trasladoElectronico" routerLink="/traslado-electronico" class="list-item"><i class="material-icons">bookmark</i>Traslado Electronico</a>
+      <a *ngIf="agendarVisita"  routerLink="/agendar-visita" class="list-item"><i class="material-icons">bookmark</i>Agendar Visita</a>
+      <a *ngIf="trasladoVisita"  routerLink="/traslado-visita" class="list-item"><i class="material-icons">bookmark</i>Traslado Visita</a>
+
+    
         <div class="container row">
           <button class="btn btn-secondary" (click)="CerrarSession()"><i class="fa fa-ban"></i>Cerrar</button>
         </div>
